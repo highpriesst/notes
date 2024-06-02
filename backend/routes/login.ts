@@ -11,6 +11,7 @@ interface Username {
   username: any;
 }
 
+//had to use as Secret at the end.
 const mySecret: Secret = process.env.MY_SECRET as Secret;
 
 const getUser = async (username: Username) => {
