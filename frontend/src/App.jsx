@@ -1,20 +1,15 @@
+import { useState } from "react";
 import "./App.css";
-import axios from "axios";
-import { useState, useEffect } from "react";
+
+import Dashboard from "./components/dashboard";
+import Login from "./components/dashboard";
 
 function App() {
-  const [message, setMessage] = useState("");
-
-  useEffect(() => {
-    axios
-      .get("http://localhost:3000/api/data")
-      .then((res) => res.data)
-      .then((data) => setMessage(data.message));
-  }, []);
-
+  const [user, setUser] = useState({ auth: false, name: "" });
   return (
     <div className="App">
-      <h1>{message}</h1>
+      <h1>Hello Devteams bg</h1>
+      {user.auth ? <Dashboard user={user} setUser={setUser} /> : <Login />}
     </div>
   );
 }
